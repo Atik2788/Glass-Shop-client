@@ -25,19 +25,22 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/table'>Table</Link></li>
-                           
-                            {user?.email==='admin@gmail.com' &&                      
-                                <li className='lg:text-white'><Link to='/dashboardlayout'>Dashboard</Link></li>
+
+
+                            {user?.email === 'admin@gmail.com' &&
+                                <>
+                                    <li className='lg:text-white'><Link to='/dashboardlayout'>Dashboard</Link></li>
+                                    <li><Link to='/table'>Table</Link></li>
+                                </>
                             }
-                           
+
                             {user?.uid ?
-                            <>
-                                <li className='lg:text-white' onClick={handleSignOut}><Link>Sign Out</Link></li>
-                                {/* <li className='lg:text-white'><Link>{user?.displayName}</Link></li> */}
-                            </>
-                            :
-                            <li><Link className='text-white' to='/login'>Login</Link></li>
+                                <>
+                                    <li className='lg:text-white' onClick={handleSignOut}><Link>Sign Out</Link></li>
+                                    {/* <li className='lg:text-white'><Link>{user?.displayName}</Link></li> */}
+                                </>
+                                :
+                                <li><Link className='text-white' to='/login'>Login</Link></li>
                             }
 
 
@@ -48,11 +51,12 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-white">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/table'>Table</Link></li>
 
-                        {user?.email==='admin@gmail.com' &&                      
+                        {user?.email === 'admin@gmail.com' &&
+                            <>
                                 <li className='lg:text-white'><Link to='/dashboardlayout'>Dashboard</Link></li>
-                            }
+                                <li><Link to='/table'>Table</Link></li>
+                            </>}
 
                         {user?.uid ?
                             <>

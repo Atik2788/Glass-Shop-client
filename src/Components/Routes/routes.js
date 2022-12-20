@@ -6,6 +6,7 @@ import DashboardLayout from "../AllSection/Dashboard/DashboardAll/DashboardLayou
 import Home from "../AllSection/HomeSection/Home";
 import Table from "../AllSection/HomeSection/Table/Table";
 import Main from "../AllSection/Main";
+import NotFound from "../AllSection/NotFound";
 
 import Login from "../Login";
 import Signup from "../Signup";
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
                 element: <AddProducts></AddProducts>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound></NotFound>
     }
 ])
 
