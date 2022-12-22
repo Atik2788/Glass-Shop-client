@@ -21,7 +21,7 @@ const AddProducts = () => {
         // set img into imgbb and get url
         const image = data.img[0];
         const formData = new FormData();
-        formData.append('image', image)
+        formData.append('image', image)        
         const url = `https://api.imgbb.com/1/upload?&key=${imageHostKey}`
         fetch(url, {
             method: 'POST',
@@ -39,7 +39,6 @@ const AddProducts = () => {
                         img: imgData.data.url,
                         price: data.price,
                         quantity: quantity
-
                     }
 
                     fetch('https://glass-shop-server.vercel.app/productsGlass', {
@@ -70,7 +69,7 @@ const AddProducts = () => {
 
     return (
         <div className='w-8/12 mx-auto '>
-            <p className='text-5xl mb-5 text-white mt-5 font-bold text-center'>Add Products</p>
+            <p className='text-5xl mb-5 titleColor mt-5 font-bold text-center'>Add Products</p>
 
 
             <form className='' onSubmit={handleSubmit(handleAddProducts)}>
@@ -78,34 +77,34 @@ const AddProducts = () => {
                 <div className=''>
 
                     <div>
-                        <label className="label"><span className="label-text text-xl text-white mt-5">Sun Glass Name</span></label>
+                        <label className="label"><span className="label-text text-xl textColor mt-5">Sun Glass Name</span></label>
                         <input {...register("name", { required: "Sun Glass Name is required" })} type="text" placeholder="Sun Glass Name" className="input input-bordered w-full" />
                         {errors.name && <p className='text-red-600 text-left' role="alert">{errors.name?.message}</p>}
                     </div>
 
                     <div>
-                        <label className="label"><span className="label-text text-xl text-white mt-5">Select Image</span></label>
+                        <label className="label"><span className="label-text text-xl textColor mt-5">Select Image</span></label>
                         <input {...register("img", { required: "Image is required" })} type="file" placeholder="Image" className="input input-bordered pt-2 w-full" />
                         {errors.img && <p className='text-red-600 text-left' role="alert">{errors.img?.message}</p>}
                     </div>
 
 
                     <div>
-                        <label className="label"><span className="label-text text-xl text-white mt-5">Description</span></label>
+                        <label className="label"><span className="label-text text-xl textColor mt-5">Description</span></label>
                         <input type="text"  {...register("description", { required: "Description is required" })}
                             className='input input-bordered w-full ' placeholder='Description' />
                         {errors.description && <p className='text-red-600 text-left' role="alert">{errors.description?.message}</p>}
                     </div>
 
                     <div>
-                        <label className="label"><span className="label-text text-xl text-white mt-5">Price</span></label>
+                        <label className="label"><span className="label-text text-xl textColor mt-5">Price</span></label>
                         <input type="text"  {...register("price", { required: "Price is required" })}
                             className='input input-bordered w-full' placeholder='Price' />
                         {errors.price && <p className='text-red-600 text-left' role="alert">{errors.price?.message}</p>}
                     </div>
 
                     <div className='flex mt-8  mb-1'>
-                        <label className="label"><span className="label-text text-xl text-white mr-3">Quantity</span></label>
+                        <label className="label"><span className="label-text text-xl textColor mr-3">Quantity</span></label>
                         <p className='pt-[6px]'>
                             {
                                 quantity === 1 ?
@@ -113,7 +112,7 @@ const AddProducts = () => {
                                     :
                                     <span className="btn bg-[#301bb5] hover:bg-[#1b1bee] text-xl" onClick={() => setQuantity(quantity - 1)}>-</span>
                             }
-                            <span className="mx-5 text-white mt-5 text-xl">{quantity}</span>
+                            <span className="mx-5 textColor mt-5 text-xl">{quantity}</span>
                             <span className="btn bg-[#301bb5] hover:bg-[#1b1bee] text-xl" onClick={() => setQuantity(quantity + 1)}>+</span>
                         </p>
                     </div>

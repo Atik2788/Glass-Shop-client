@@ -3,6 +3,7 @@ import AddProducts from "../AllSection/Dashboard/AddProducts/AddProducts";
 import AllProducts from "../AllSection/Dashboard/AllProducts/AllProducts";
 import DashboardHome from "../AllSection/Dashboard/DashboardAll/DashboardHome";
 import DashboardLayout from "../AllSection/Dashboard/DashboardAll/DashboardLayout";
+import UserTableNew from "../AllSection/Dashboard/DashboardAll/ShowUserTable/AllUsers/AllUsers";
 import Home from "../AllSection/HomeSection/Home";
 import Table from "../AllSection/HomeSection/Table/Table";
 import Main from "../AllSection/Main";
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboardlayout/addProducts',
                 element: <AddProducts></AddProducts>
+            },
+            {
+                path: '/dashboardlayout/allUsers',
+                element: <UserTableNew></UserTableNew>
             }
         ]
     },

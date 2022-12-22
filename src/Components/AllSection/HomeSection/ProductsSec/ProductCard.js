@@ -68,7 +68,7 @@ const ProductCard = ({ glassData, refetch }) => {
 
     return (
         <div>
-            <div className="card  bg-[#026e8f] shadow-xl px-2 mb-5 pt-2 text-white">
+            <div className="card  bg-[#d6e0f9] shadow-xl px-2 mb-5 pt-2 text-black">
                 <figure><img className='h-80 w-[440px] rounded-t-xl' src={img} alt="Album" /></figure>
                 <div className="my-5">
                     <h2 className="text-2xl font-bold">{name}</h2>
@@ -80,12 +80,12 @@ const ProductCard = ({ glassData, refetch }) => {
                             <p className='pt-1'>Quantity: </p>
                             {
                                 quantity === 1 ?
-                                    <span className='mx-3 px-[14px] pt-1 pb-[8px] rounded-[5px]  bg-[#301bb5] hover:bg-[#1b1bee]'><button>-</button></span>
+                                    <span className='mx-3 px-[14px] pt-1 pb-[8px] rounded-[5px]  btnCss'><button>-</button></span>
                                     :
-                                    <span onClick={() => setQuantity(quantity - 1)} className='mx-3 px-[14px] pt-1 pb-[8px] rounded-[5px] bg-[#301bb5] hover:bg-[#1b1bee]'><button>-</button></span>
+                                    <span onClick={() => setQuantity(quantity - 1)} className='mx-3 px-[14px] pt-1 pb-[8px] rounded-[5px] btnCss'><button>-</button></span>
                             }
                             <span className='pt-1'>{quantity}</span>
-                            <span onClick={() => setQuantity(quantity + 1)} className='mx-3 px-3 pt-1 pb-[8px] rounded-[5px] bg-[#301bb5] hover:bg-[#1b1bee]'><button>+</button></span>
+                            <span onClick={() => setQuantity(quantity + 1)} className='mx-3 px-3 pt-1 pb-[8px] rounded-[5px] btnCss'><button>+</button></span>
                         </div>
                     </div>
 
@@ -94,13 +94,13 @@ const ProductCard = ({ glassData, refetch }) => {
                             <div>
                                 {
                                     user?.email === "admin@gmail.com" ?
-                                        <button className="btn bg-[#301bb5]" onClick={() => handleDeleteProducts(_id)}>Delete</button>
+                                        <button className="btn btnCss" onClick={() => handleDeleteProducts(_id)}>Delete</button>
                                         :
-                                        <button onClick={() => handleOrder()} className="btn bg-[#301bb5]">Add To Cart</button>
+                                        <button onClick={() => handleOrder()} className="btn bg-btnCss">Add To Cart</button>
                                 }
                             </div>
                             :
-                            <Link to='/login'><button className="btn bg-[#301bb5]">Please Log in to add product</button></Link>
+                            <Link to='/login'><button className="btn btnCss">Please Log in to add product</button></Link>
                         }
                     </div>
                 </div>

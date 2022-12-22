@@ -6,15 +6,15 @@ import Dashboard from './Dashboard';
 
 const DashboardLayout = () => {
     return (
-        <div>
+        <div className=''>
             <Navbar></Navbar>
 
-            <div className='flex'>
-                <div className='w-36 z-40'>
+            <div className='flex w-11/12 mx-auto'>
+                <div className=' z-40'>
                     <Dashboard></Dashboard>
                 </div>
 
-                <div className='w-10/12 mx-auto z-10'>
+                <div className='w-full mx-auto z-10'>
                     <Outlet></Outlet>
                 </div>
             </div>

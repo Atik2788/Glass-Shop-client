@@ -70,8 +70,8 @@ const Table = () => {
 
 
 
+    // print page
     const componentRef = useRef();
-
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
         documentTitle: 'TableData',
@@ -87,9 +87,9 @@ const Table = () => {
                     <p className='text-5xl mb-10 text-[#5cc9ff] font-bold text-center'>Table Data</p>
 
                     <div className='flex justify-end mr-20 mb-5'>
-                        <ExportXl
+                        {/* <ExportXl
                             tableData={tableData}
-                        ></ExportXl>
+                        ></ExportXl> */}
 
                         <div className='px-3'>
                             <button onClick={handlePDF} className='text-white btn btn-sm px-5 rounded-md bg-[#1e2585e7] hover:bg-[#5f69d6f1]'>PDF</button>
@@ -105,24 +105,24 @@ const Table = () => {
                     <table className="table relative mx-auto mb-20  ">
                         <thead className='sticky top-20 '>
                             <tr className=' '>
-                                <th className='hover:text-2xl  bg-orange-200'>Sl</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-1</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-2</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-3</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-4</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-5</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-6</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-7</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-8</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-9</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-10</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-11</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-12</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-13</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-14</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Name-15</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Edit</th>
-                                <th className='hover:text-2xl  bg-orange-200'>Delete</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Sl</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-1</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-2</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-3</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-4</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-5</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-6</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-7</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-8</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-9</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-10</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-11</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-12</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-13</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-14</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Name-15</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Edit</th>
+                                <th className='hover:bg-orange-300  bg-orange-200'>Delete</th>
                             </tr>
                         </thead>
 

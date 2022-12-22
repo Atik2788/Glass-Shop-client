@@ -68,7 +68,7 @@ const EditModal = ({ rowsData, setRowsData, refetch }) => {
 
 
         fetch(`https://glass-shop-server.vercel.app/tableData/${rowsData?._id}`, {
-            method: 'PUt',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },

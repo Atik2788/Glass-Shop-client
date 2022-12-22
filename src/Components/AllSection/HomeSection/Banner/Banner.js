@@ -36,12 +36,12 @@ const Banner = () => {
                 <div style={bgImgStyle}>
                     <div className='trans-bg'></div>
                     <div className='description text-center'>
-                    <div className='text-white'>
+                    <div className='text-white lg:mt-20'>
                         <h1 className='text-5xl font-bold mb-2'>{imgSlider[currentState].title}</h1>
                         <p className='text-xl mb-10'>{imgSlider[currentState].body}</p>
                     </div>
 
-                    <div className='carousel-ind mt-60'>
+                    <div className='carousel-ind lg:mt-60 mt-72'>
                         {
                             imgSlider.map((imgSlider, currentState) => (
                                 <span key={currentState} onClick={() => goToNext(currentState)}></span>

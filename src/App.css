@@ -1,7 +1,8 @@
 .App {
   text-align: center;
-  background: #026e8f;
-  background: #114e6c;
+  background: #F4F5FA;
+
+  /* background: #114e6c; */
   /* background: #0b7e69; */
 }
 
@@ -42,3 +43,82 @@
   }
 }
 
+.btnCss{
+  background-color: #9155FD;
+  color: white;
+  border: none;
+}
+
+.btnCss:hover{
+  background-color: #6512ff;
+}
+
+.HFcolor{
+  background-color: #d5d4fd33;
+  color: black;
+}
+
+.textColor{
+  color: rgba(58, 53, 65, 0.68);
+}
+
+
+.titleColor{
+  color: #9155FD;
+}
+
+.pdfBorder{
+  border: 1px solid rgba(138, 141, 147, 0.5);
+  border-radius: 5px;
+}
+
+.textTable{
+  color: rgba(58, 53, 65, 0.87)
+}
+
+.tableBracker{
+  height: 14px;
+  width: 2px;
+background: rgba(58, 53, 65, 0.12);;
+}
+
+.ticBeforeUaserImg{
+  height: 14px;
+  width: 14px;
+  border-radius: 100px;
+background: rgba(74, 73, 77, 0.911);;
+}
+
+.activeBtn{
+  color: #56CA00;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), #4CAF50;
+  width: 60px;
+  height: 24px;
+  border-radius: 16px;
+}
+
+.pendingBtn{
+  color: #FFB400;;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), #ED6C02;
+  width: 71px;
+  height: 24px;
+  border-radius: 16px;
+}
+
+.inactiveBtn{
+  color: #8A8D93;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), #8A8D93;
+  width: 70px;
+  height: 24px;
+  border-radius: 16px;
+}
+
+/* @media print{
+  body * {
+    visibility: hidden;
+  }
+
+  .print-container{
+    visibility: visible;
+  }
+} */

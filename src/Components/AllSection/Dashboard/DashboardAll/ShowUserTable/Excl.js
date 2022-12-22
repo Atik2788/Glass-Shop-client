@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx'
+import { MdIosShare } from "react-icons/md";
 
-
-
-const ExportXl = ({ userDatas }) => {
+const Excl = ({ userDatas }) => {
     const datas = (userDatas)
 
 
@@ -12,24 +11,22 @@ const ExportXl = ({ userDatas }) => {
     const handleExportExcl = (userDatas) => {
         // console.log(tableData.row)
 
-        userDatas.map(xlData =>{            
+        userDatas.map(xlData => {
             xlDatas.push(xlData)
         })
-        // console.log(xlDatas)
-        
+        // console.log(xlDatas)        
 
         const wb = XLSX.utils.book_new(),
-        ws = XLSX.utils.json_to_sheet(xlDatas)
+            ws = XLSX.utils.json_to_sheet(xlDatas)
         XLSX.utils.book_append_sheet(wb, ws, "MySheet");
         XLSX.writeFile(wb, "MyExcel.xlsx")
     }
 
     return (
-        <div className='px-3'>
 
-            <button onClick={() => handleExportExcl(userDatas)} className='text-white btn btn-sm px-5 rounded-md bg-[#1e2585e7] hover:bg-[#5f69d6f1]'>Excel</button>
-        </div>
+        <span onClick={() => handleExportExcl(userDatas)} ><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span>EXCEL </span> </span>
+
     );
 };
 
-export default ExportXl;
+export default Excl;

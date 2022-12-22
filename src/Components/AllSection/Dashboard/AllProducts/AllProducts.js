@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-hot-toast';
+import jsPDF from 'jspdf'
 
 const AllProducts = () => {
 
@@ -39,10 +40,24 @@ const AllProducts = () => {
     }
 
 
+
+
+    const handlePDF = () => {
+        const doc = new jsPDF("l", "pt", "a3")
+        doc.html(document.querySelector("#pdfFull"), {
+            callback: function (pdf) {
+                pdf.save("ExcelData.pdf");
+            }
+        });
+
+    }
+
+
     return (
-        <div className='mt-5'>
-            <div className="overflow-x-auto w-full">
-                <p className='text-5xl mb-10 text-white font-bold text-center'>My Products</p>
+        <div className='mt-5' id='pdfFull'>
+            <div className="overflow-x-auto w-full mb-20">
+                {/* <button className='btn' onClick={handlePDF}>pdf</button> */}
+                <p className='text-5xl mb-10 titleColor font-bold text-center'>My Products</p>
 
                 <table className="table lg:w-[1000px] mx-auto">
                     <thead>
