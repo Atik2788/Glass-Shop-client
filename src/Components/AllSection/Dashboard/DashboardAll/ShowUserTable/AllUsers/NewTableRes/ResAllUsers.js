@@ -3,15 +3,27 @@ import { BsRecordCircle, BsCircle, BsCircleFill } from "react-icons/bs";
 import { ImCheckboxUnchecked } from "react-icons/im";
 import { MdIosShare } from "react-icons/md";
 import { useQuery } from '@tanstack/react-query';
-import UserTable2 from './AllUsers2';
-import EditUseModal from '../EditUserModal/EditUseModal';
-import AddUserModal from '../AddUserModal/AddUserModal';
 import jsPDF from 'jspdf'
-import Excl from '../Excl';
 import { useReactToPrint } from 'react-to-print';
 import { toast } from 'react-hot-toast';
+import Typewriter from 'typewriter-effect';
 
-const AllUsers = () => {
+import ResExcl from './ResExcl/ResExcl';
+import ResAllUserRow from './ResAllUserRow';
+import ResEditModal from './ResEditAndAdd/ResEditModal';
+import ResAddUser from './ResEditAndAdd/ResAddUser';
+
+
+// install npm*****************
+// npm i typewriter-effect
+// npm i @tanstack/react-query
+// npm install react-icons --save
+//npm i xlsx
+
+// install npm*****************
+
+
+const ResAllUsers = () => {
 
     const [pdfShow, setPdfShow] = useState(false)
     const [pdfShowImg, setPdfShowImg] = useState(false)
@@ -115,32 +127,40 @@ const AllUsers = () => {
 
 
 
-    // print page
-    const [titlePrint, setTitlePrint] = useState(true)
+  // print page
+  const [titlePrint, setTitlePrint] = useState(true)
 
-    const handlePrintUser = (data) => {
-        setTitlePrint(false)
-        // handlePrint()
-        handleClick()
-    }
+  const handlePrintUser = (data) => {
+      setTitlePrint(false)
+      // handlePrint()
+      handleClick()
+  }
+
+  const handleClick = () => {
+      // setTime out for time delay,
+      setTimeout(() => {
+          handlePrint()
+          setTitlePrint(true)
+      }, 1000)
+  }
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+      documentTitle: 'TableData',
+      // onafterprint: () => setPdfShow(false),
+      onafterprint: () => toast('Print Successfully!!')
+  })
 
 
-    const handleClick = () => {
-        // setTime out for time delay,
-        setTimeout(() => {
-            handlePrint()
-            setTitlePrint(true)
-        }, 1000)
-    }
 
 
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-        documentTitle: 'TableData',
-        // onafterprint: () => setPdfShow(false),
-        onafterprint: () => toast('Print Successfully!!')
-    })
+  // click sound
+//   const handleClickSound = () =>{
+//     const audio = new Audio();
+//         audio.src = {clickSound}
+//   }
+
 
 
 
@@ -149,26 +169,38 @@ const AllUsers = () => {
         <div id='total-page'>
             <div className='mt-10 mb-20 mx-[20px]'>
 
-                <h2 className='mb-7 text-left text-4xl titleColor print-container' id=''>All Users</h2>
+                {/* <h2 className='mb-7 ' id=''>All Users</h2> */}
+
+                <div className='mb-7 text-left text-4xl titleColor print-container'>
+                        <Typewriter
+                            options={{
+                                autoStart: true,
+                                loop: true,
+                                delay: 120,
+                                strings: [
+                                    'All Users',
+                                ]
+                            }}
+                        />
+                    </div>
                 {/* <ExclNew userDatas={userDatas}>aaaa</ExclNew> */}
                 <div className='bg-white'>
 
-                    <div className='flex justify-between pt-7'>
-                        <div className=' text-left'>
-                            <button onClick={handlePdfShow} className='ml-5  pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PDF</span></span></button>
-                            <button className='ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><Excl userDatas={userDatas}></Excl></button>
+                    <div className='lg:flex justify-between pt-7'>
 
-                            <button onClick={() => handlePrintUser('')} className='ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PRINT</span></span></button>
+                        <div className=' text-left lg:flex grid grid-cols-1 gap-3 md:grid-cols-2'>
+                            <button onClick={handlePdfShow} className='ml-5   pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PDF</span></span></button>
+                            <button className='ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px] hover:text-[#9155FD]'><ResExcl userDatas={userDatas}></ResExcl></button>
+
+                            <button onClick={() => handlePrintUser('')} className='ml-5 pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PRINT</span></span></button>
 
                             <button className=''>
-
-
-                                <div className="ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm h-[38px] textColor w-[191px]">
+                                <div className="ml-5 pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm h-[38px] textColor w-[191px]">
                                     <ul className="menu">
                                         <li tabIndex={0}>
                                             <span className='text-sm'>SHOW/HIDE COLUMN<span></span></span>
 
-                                            <ul className="bg-white">
+                                            <ul className="w-40 lg:ml-[0px] lg:mt-[0px] md:ml-[-180px] md:mt-[35px] ml-[-180px] mt-[37px] bg-[#d6d6d6]">
 
                                                 <li tabIndex={0}>
                                                     {
@@ -239,14 +271,12 @@ const AllUsers = () => {
                                 </div>
 
                             </button>
-
-
                         </div>
 
-                        <div className='flex text-right'>
+                        <div className='lg:flex grid grid-cols-1 gap-3 mt-4 lg:mt-0 text-right'>
                             <input className='ml-5 pdfBorder text-sm py-2 textColor w-[238px] pl-5' type="text" placeholder='Search Invoice' />
                             <button className='ml-5 mr-5 pdfBorder text-sm py-2  w-[128px] btnCss'>
-                                <label htmlFor="add-user-modal" onClick={() => setEditUserData('Added')}>ADD USER</label>
+                                <label htmlFor="add-user-modal-res" onClick={() => setEditUserData('Added')}>ADD USER</label>
                             </button>
 
                         </div>
@@ -255,11 +285,11 @@ const AllUsers = () => {
 
                     <div id='pdfFull' ref={componentRef} className='PRINT-PAGE' >
                         {pdfShow &&
-                            <h2 className='text-center titleColor text-4xl mb-10 mt-10'>All Users Page</h2>
+                            <h2 className='text-center titleColor text-4xl mb-10 mt-10'>All Users Page Res</h2>
                         }
 
                         {!titlePrint &&
-                            <h2 className='text-center titleColor text-4xl mb-10 mt-10'>All Users Page</h2>
+                            <h2 className='text-center titleColor text-4xl mb-10 mt-10'>All Users Page Res</h2>
                         }
                         <table className="mt-7 w-full" >
 
@@ -315,7 +345,7 @@ const AllUsers = () => {
                                 <tbody className='' >
                                     {
                                         userDatas.map(userData =>
-                                            <UserTable2 key={userData._id} userData={userData}
+                                            <ResAllUserRow key={userData._id} userData={userData}
                                                 toggleAll={toggleAll}
                                                 toggleUser={toggleUser}
                                                 toggleEmail={toggleEmail}
@@ -327,7 +357,7 @@ const AllUsers = () => {
                                                 editUserData={editUserData}
                                                 setEditUserData={setEditUserData}
                                                 pdfShowImg={pdfShowImg}
-                                            ></UserTable2>
+                                            ></ResAllUserRow>
                                         )
                                     }
 
@@ -344,22 +374,22 @@ const AllUsers = () => {
                 </div>
 
                 {editUserData &&
-                    <EditUseModal
+                    <ResEditModal
                         editUserData={editUserData}
                         refetch={refetch}
                         setEditUserData={setEditUserData}
-                    ></EditUseModal>
+                    ></ResEditModal>
                 }
 
                 {editUserData &&
-                    <AddUserModal
+                    <ResAddUser
                         refetch={refetch}
                         setEditUserData={setEditUserData}
-                    ></AddUserModal>}
+                    ></ResAddUser>}
 
             </div>
         </div>
     );
 };
 
-export default AllUsers;
+export default ResAllUsers;

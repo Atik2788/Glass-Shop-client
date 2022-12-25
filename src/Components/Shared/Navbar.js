@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import logo from '../../images/glassLogo.png'
 
 
 const Navbar = () => {
@@ -29,7 +30,7 @@ const Navbar = () => {
 
                             {user?.email === 'admin@gmail.com' &&
                                 <>
-                                    <li className='lg:text-black'><Link to='/dashboardlayout'>Dashboard</Link></li>
+                                    <li className='lg:text-black'><Link to='/dashboardlayout'> Dashboard</Link></li>
                                     <li><Link to='/table'>Table</Link></li>
                                 </>
                             }
@@ -46,7 +47,7 @@ const Navbar = () => {
 
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl text-black">GlassShop</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl "> <span><img className='w-10 mr-3' src={logo} alt="" /></span> GlassShop</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-black">

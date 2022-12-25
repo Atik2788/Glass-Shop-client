@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { ImCheckboxUnchecked } from "react-icons/im";
 import { toast } from 'react-hot-toast';
+import pc from '../../../../../../../images/pc.png'
+import settings from '../../../../../../../images/settings.png'
+import pen from '../../../../../../../images/pen.png'
 
-const AllUsers2 = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, toggleUser, toggleEmail, toggleRole, togglePlan, toggleStatus, toggleAction }) => {
+
+
+const ResAllUserRow = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, toggleUser, toggleEmail, toggleRole, togglePlan, toggleStatus, toggleAction }) => {
     const { name, _id, email, userName, img, plan, role, status } = userData;
     // console.log(status)
 
@@ -29,7 +34,7 @@ const AllUsers2 = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, 
     return (
         <>
             {toggleAll &&
-                <tr className='border-y-2 text-left  bg-[#F9FAFC]'>
+                <tr className='border-y-2 text-left  bg-[#F9FAFC]     '>
 
                     {toggleUser &&
                         <td className='pl-5 hover:bg-slate-300'> <p>
@@ -61,8 +66,21 @@ const AllUsers2 = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, 
                         <td className='pl-5 text-sm hover:bg-slate-300'>{email}</td>
                     }
 
-                    {toggleRole &&
+                    {/* {toggleRole &&
                         <td className='pl-5 text-sm hover:bg-slate-300'>{role}</td>
+                    } */}
+
+                     {toggleRole &&
+                        <td className='pl-5 text-sm hover:bg-slate-300'>
+                            {role === 'Admin' &&
+                            <p className='text-black flex items-center'><img className='w-5 mr-3' src={pc} alt="" />{role}</p>}
+
+                            {role === 'Editor' &&
+                            <p className='text-black flex items-center'><img className='w-5 mr-3' src={pen} alt="" />{role}</p>}
+
+                            {role === 'Author' &&
+                            <p className='text-black flex items-center'><img className='w-5 mr-3' src={settings} alt="" />{role}</p>}
+                        </td>
                     }
 
                     {togglePlan &&
@@ -90,8 +108,8 @@ const AllUsers2 = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, 
                             <div className="menu">
                                 <li tabIndex={0}>
                                     <span className='font-bold hover:bg-slate-300'>:</span>
-                                    <ul className=" text-black bg-slate-300 w-40 ml-[-225px] mt-[0px]">
-                                        <label htmlFor="edit-user-modal" className='bg-bg-slate-200 hover:bg-slate-400  p-2' onClick={() => setEditUserData(userData)}>Edit</label>
+                                    <ul className=" text-black bg-slate-300 w-40 ml-[-219px] mt-[0px]">
+                                        <label htmlFor="edit-user-modal-res" className='bg-bg-slate-200 hover:bg-slate-400  p-2' onClick={() => setEditUserData(userData)}>Edit</label>
                                         {/* <li htmlFor="edit-user-modal" className='bg-bg-slate-200 hover:bg-slate-400  p-2' onClick={() => setEditUserData(userData)}>Edit</li> */}
                                         <li className='bg-bg-slate-200 hover:bg-slate-400 p-2' onClick={() => handleDeleteProducts(_id)}>Delete</li>
                                     </ul>
@@ -109,4 +127,6 @@ const AllUsers2 = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, 
     );
 };
 
-export default AllUsers2;
+export default ResAllUserRow;
+
+

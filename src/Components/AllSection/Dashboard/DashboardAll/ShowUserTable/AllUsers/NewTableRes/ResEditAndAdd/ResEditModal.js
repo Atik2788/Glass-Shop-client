@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Form as form } from 'react-router-dom';
 
-const EditUseModal = ({ editUserData, setEditUserData, refetch }) => {
+const ResEditModal = ({ editUserData, setEditUserData, refetch }) => {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -109,19 +109,17 @@ const EditUseModal = ({ editUserData, setEditUserData, refetch }) => {
                         toast(data.message)
                     }
                 })
-
-                
         }
     }
 
     return (
         <>
-            <input type="checkbox" id="edit-user-modal" className="modal-toggle" />
+            <input type="checkbox" id="edit-user-modal-res" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <label onClick={() => setEditUserData(null)} htmlFor="edit-user-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label onClick={() => setEditUserData(null)} htmlFor="edit-user-modal-res" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div>
-                        <p className='text-xl font-bold'>Edit User</p>
+                        <p className='text-xl font-bold'>Edit User -Res</p>
 
                         <div className='mt-5'>
 
@@ -193,4 +191,4 @@ const EditUseModal = ({ editUserData, setEditUserData, refetch }) => {
     );
 };
 
-export default EditUseModal;
+export default ResEditModal;

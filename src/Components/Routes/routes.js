@@ -4,6 +4,8 @@ import AllProducts from "../AllSection/Dashboard/AllProducts/AllProducts";
 import DashboardHome from "../AllSection/Dashboard/DashboardAll/DashboardHome";
 import DashboardLayout from "../AllSection/Dashboard/DashboardAll/DashboardLayout";
 import UserTableNew from "../AllSection/Dashboard/DashboardAll/ShowUserTable/AllUsers/AllUsers";
+import DatabaseTable from "../AllSection/Dashboard/DashboardAll/ShowUserTable/AllUsers/NewTableRes/DatabasaeTable/DatabaseTable";
+import ResAllUsers from "../AllSection/Dashboard/DashboardAll/ShowUserTable/AllUsers/NewTableRes/ResAllUsers";
 import Home from "../AllSection/HomeSection/Home";
 import Table from "../AllSection/HomeSection/Table/Table";
 import Main from "../AllSection/Main";
@@ -55,6 +57,14 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboardlayout/allUsers',
                 element: <UserTableNew></UserTableNew>
+            },
+            {
+                path: '/dashboardlayout/resAllUsers',
+                element: <ResAllUsers></ResAllUsers>
+            },
+            {
+                path: '/dashboardlayout/newUserTable',
+                element: <DatabaseTable></DatabaseTable>
             }
         ]
     },

@@ -77,29 +77,29 @@ const Login = () => {
 
 
     return (
-        <div className='lg:w-2/4 mx-auto lg:my-10 my-5 px-3 lg:px-0 md:px-6 text-center lg:flex justify-center'>
-            <div className='shadow-xl lg:w-[500px] bg-[#2a2453] rounded-xl lg:p-6 p-3'>
-                <p className='text-5xl mb-5 text-white'>Login</p>
+        <div className='lg:w-2/4 mx-auto lg:my-20 my-5 px-3 lg:px-0 md:px-6 text-center lg:flex justify-center'>
+            <div className='shadow-xl lg:w-[500px] bg-[#bdd0fd] rounded-xl lg:p-6 p-3'>
+                <p className='text-5xl mb-5 titleColor'>Login</p>
 
                 <form className='grid grid-cols-1 gap-3' onSubmit={handleSubmit(handleLogin)}>
 
                     <div>
-                        <label className="label"><span className="label-text text-white">Email</span></label>
+                        <label className="label"><span className="label-text titleColor">Email</span></label>
                         <input {...register("email", { required: true })} type="email" placeholder="Email" className="input input-bordered w-full" />
                     </div>
                     <div>
-                        <label className="label"><span className="label-text text-white">Password</span></label>
+                        <label className="label"><span className="label-text titleColor">Password</span></label>
                         <input {...register("password", { required: true })} type="password" placeholder="Password" className="input input-bordered w-full" />
-                        <label className="label"><span className="label-text text-white">Forget Password?</span></label>
+                        <label className="label"><span className="label-text titleColor">Forget Password?</span></label>
                     </div>
 
                     <p className='text-red-600 text-left'>{loginError}</p>
-                    <input className='btn bg-[#301bb5] w-full mt-3 ' type="submit" />
+                    <input className='btn btnCss w-full mt-3 ' type="submit" value="Login"/>
                 </form>
 
-                <p className='mt-3 text-md font-semibold text-left mb-6 text-white'>New to Glass Shop? <Link className='text-blue-700' to='/signup'> Create an account.</Link></p>
-                <div className="divider text-white">OR</div>
-                <button onClick={handleGoogleLogIn} className='w-full p-3 btn-outline bg-[#301bb5] rounded-lg border-2 text-white border-slate-500'>CONTINUE WITH GOOGLE</button>
+                <p className='mt-3 text-md font-semibold text-left mb-6 text-black'>New to Glass Shop? <Link className='titleColor' to='/signup'> Create an account.</Link></p>
+                <div className="divider titleColor">OR</div>
+                <button onClick={handleGoogleLogIn} className='w-full p-3 btn-outline btnCss rounded-lg border-2 text-white border-slate-500'>CONTINUE WITH GOOGLE</button>
 
             </div>
         </div>

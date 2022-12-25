@@ -1,12 +1,13 @@
 import React from 'react';
 import AllProducts from '../AllProducts/AllProducts';
 import AllUsers from './ShowUserTable/AllUsers/AllUsers';
+import ResAllUsers from './ShowUserTable/AllUsers/NewTableRes/ResAllUsers';
 
 
 const DashboardHome = () => {
     return (
         <div>
-           <AllUsers></AllUsers>
+           <ResAllUsers></ResAllUsers>
         </div>
     );
 };

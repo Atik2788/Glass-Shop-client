@@ -9,8 +9,8 @@ const DashboardLayout = () => {
         <div className=''>
             <Navbar></Navbar>
 
-            <div className='flex w-11/12 mx-auto'>
-                <div className=' z-40'>
+            <div className='lg:flex w-11/12 mx-auto'>
+                <div className='z-40'>
                     <Dashboard></Dashboard>
                 </div>
 
