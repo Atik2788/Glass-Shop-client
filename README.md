@@ -1,4 +1,4 @@
-# Live_Site Link: https://glass-shop-72b05.web.app/table
+# Live_Site Link: https://glass-shop-72b05.web.app/
 
 # ServerSite Git: https://github.com/Atik2788/Glass-Shop-Server
 
