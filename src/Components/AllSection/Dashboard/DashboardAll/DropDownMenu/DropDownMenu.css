@@ -1,0 +1,87 @@
+.dropdownContainer{
+ position: relative;
+}
+
+.dropdownContent{
+    position: absolute;
+    text-align: left;
+    /* top: 25px; */
+    /* left: 0px; */
+    /* background-color: rgba(226, 226, 226, 0.474); */
+    display: none;
+}
+
+.dropdownContent li{
+    display: block;
+    padding: 5px 30px 5px 10px ;
+    min-width: 80px;
+}
+
+.dropdownContent li:hover{
+    background-color: rgba(209, 209, 209, 0.474);
+}
+
+.dropdownContainer:hover .dropdownContent{
+    display: block;
+}
+
+
+
+/* ***********  >>>>> 2nd step menu <<<<<<   ***** */
+.dropdownContainer-2{
+    position: relative;
+}
+
+.dropdownContent-2{
+    position: absolute;
+    text-align: left;
+    /* top: 0px; */
+    /* left: 100px; */
+    background-color: rgb(243, 242, 242);
+    display: none;
+}
+
+.dropdownContent-2 li{
+    display: block;
+    padding: 5px 10px 5px 10px ;
+    /* min-width: 150px; */
+}
+
+.dropdownContent-2 li:hover{
+    background-color: rgba(209, 209, 209, 0.474);
+    font-weight: bold;
+}
+
+.dropdownContainer-2:hover .dropdownContent-2{
+    display: block;
+}
+
+
+/* ***********  >>>>> 3rd step menu <<<<<<   ***** */
+.dropdownContainer-2-1{
+    position: relative;
+}
+
+.dropdownContent-2-1{
+    position: absolute;
+    text-align: left;
+    /* top: 0px; */
+    /* left: 150px; */
+    background-color: rgb(243, 242, 242);
+    display: none;
+}
+
+.dropdownContent-2-1 li{
+    display: block;
+    padding: 5px 10px 5px 10px ;
+    min-width: 150px;
+}
+
+.dropdownContent-2-1 li:hover{
+    background-color: rgba(209, 209, 209, 0.474);
+    font-weight: bold;
+}
+
+.dropdownContainer-2-1:hover .dropdownContent-2-1{
+    display: block;
+}

@@ -96,7 +96,7 @@ const ProductCard = ({ glassData, refetch }) => {
                                     user?.email === "admin@gmail.com" ?
                                         <button className="btn btnCss" onClick={() => handleDeleteProducts(_id)}>Delete</button>
                                         :
-                                        <button onClick={() => handleOrder()} className="btn bg-btnCss">Add To Cart</button>
+                                        <button onClick={() => handleOrder()} className="btn btnCss ">Add To Cart</button>
                                 }
                             </div>
                             :

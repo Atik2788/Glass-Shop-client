@@ -7,7 +7,7 @@ import pen from '../../../../../../../images/pen.png'
 
 
 
-const ResAllUserRow = ({ pdfShowImg, setEditUserData, refetch, userData, toggleAll, toggleUser, toggleEmail, toggleRole, togglePlan, toggleStatus, toggleAction }) => {
+const ResAllUserRow = ({ pdfShowImg, setEditUserData, actionShow, refetch, userData, toggleAll, toggleUser, toggleEmail, toggleRole, togglePlan, toggleStatus, toggleAction }) => {
     const { name, _id, email, userName, img, plan, role, status } = userData;
     // console.log(status)
 
@@ -70,16 +70,16 @@ const ResAllUserRow = ({ pdfShowImg, setEditUserData, refetch, userData, toggleA
                         <td className='pl-5 text-sm hover:bg-slate-300'>{role}</td>
                     } */}
 
-                     {toggleRole &&
+                    {toggleRole &&
                         <td className='pl-5 text-sm hover:bg-slate-300'>
                             {role === 'Admin' &&
-                            <p className='text-black flex items-center'><img className='w-5 mr-3' src={pc} alt="" />{role}</p>}
+                                <p className='text-black flex items-center'><img className='w-5 mr-3' src={pc} alt="" />{role}</p>}
 
                             {role === 'Editor' &&
-                            <p className='text-black flex items-center'><img className='w-5 mr-3' src={pen} alt="" />{role}</p>}
+                                <p className='text-black flex items-center'><img className='w-5 mr-3' src={pen} alt="" />{role}</p>}
 
                             {role === 'Author' &&
-                            <p className='text-black flex items-center'><img className='w-5 mr-3' src={settings} alt="" />{role}</p>}
+                                <p className='text-black flex items-center'><img className='w-5 mr-3' src={settings} alt="" />{role}</p>}
                         </td>
                     }
 
@@ -103,21 +103,20 @@ const ResAllUserRow = ({ pdfShowImg, setEditUserData, refetch, userData, toggleA
                         </td>
                     }
 
-                    {toggleAction &&
-                        <td className='pl-10 font-bold'>
-                            <div className="menu">
-                                <li tabIndex={0}>
-                                    <span className='font-bold hover:bg-slate-300'>:</span>
-                                    <ul className=" text-black bg-slate-300 w-40 ml-[-219px] mt-[0px]">
-                                        <label htmlFor="edit-user-modal-res" className='bg-bg-slate-200 hover:bg-slate-400  p-2' onClick={() => setEditUserData(userData)}>Edit</label>
+                    {actionShow &&
+                        <span>
+                            {toggleAction &&
+                                <td className='pl-10 font-bold dropdownContainer-2'>
+                                    <span className='font-bold hover:bg-slate-300 '>:</span>
+                                    <ul className=" text-black bg-slate-300 w-40 dropdownContent-2 mt-[-30px] ml-[-160px]">
+                                        <li htmlFor="edit-user-modal-res" className=' p-2' onClick={() => setEditUserData(userData)}>Edit</li>
                                         {/* <li htmlFor="edit-user-modal" className='bg-bg-slate-200 hover:bg-slate-400  p-2' onClick={() => setEditUserData(userData)}>Edit</li> */}
-                                        <li className='bg-bg-slate-200 hover:bg-slate-400 p-2' onClick={() => handleDeleteProducts(_id)}>Delete</li>
+                                        <li className='p-2' onClick={() => handleDeleteProducts(_id)}>Delete</li>
                                     </ul>
-                                </li>
-                            </div>
-                        </td>
+                                </td>
+                            }
+                        </span>
                     }
-
 
                 </tr>
 

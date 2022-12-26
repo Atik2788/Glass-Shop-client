@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillCaretDown } from "react-icons/ai";
 import { BsRecordCircle } from "react-icons/bs";
+import DropDownMenu from './DropDownMenu/DropDownMenu';
 
 const Dashboard = () => {
     return (
         <div>
-            <div className="">
+            {/* <div className="">
                 <ul className="menu">
                     <li tabIndex={0}>
                         <span className='textColor text-lg font-bold w-40 '>Dashboard<span><BsRecordCircle /></span></span>
@@ -17,9 +18,9 @@ const Dashboard = () => {
                                 <li tabIndex={0}>
                                     <span>Users <span><AiFillCaretDown /></span></span>
                                     <ul className="bg-[#d6d6d6]">
-                                        {/* <li><Link to='/dashboardlayout/allUsers'>All Users</Link></li> */}
+                                        <li><Link to='/dashboardlayout/allUsers'>All Users</Link></li>
                                         <li><Link to='/dashboardlayout/resAllUsers'>All Users</Link></li>
-                                        {/* <li><Link to=''>Database Table</Link></li> */}
+                                        <li><Link to=''>Database Table</Link></li>
                                         <li><Link>Admin</Link></li>
                                         <li><Link to=''>All Sellers</Link></li>
                                     </ul>
@@ -67,11 +68,9 @@ const Dashboard = () => {
                         </ul>
                     </li>
                 </ul>
-            </div >
+            </div > */}
 
-
-
-
+            <DropDownMenu></DropDownMenu>
         </div >
     );
 };

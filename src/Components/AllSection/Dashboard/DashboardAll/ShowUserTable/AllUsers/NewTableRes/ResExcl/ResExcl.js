@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx'
 import { MdIosShare } from "react-icons/md";
-//npm i xlsx
 
 const ResExcl = ({ userDatas }) => {
     const datas = (userDatas)
@@ -17,10 +16,9 @@ const ResExcl = ({ userDatas }) => {
         })
         // console.log(xlDatas)        
 
-        const wb = XLSX.utils.book_new()
-        const wb2 = XLSX.utils.book_new(),
+        const wb = XLSX.utils.book_new(),
             ws = XLSX.utils.json_to_sheet(xlDatas)
-        XLSX.utils.book_append_sheet(wb2, ws, "MySheet");
+        XLSX.utils.book_append_sheet(wb, ws, "MySheet");
         XLSX.writeFile(wb, "MyExcel.xlsx")
     }
 

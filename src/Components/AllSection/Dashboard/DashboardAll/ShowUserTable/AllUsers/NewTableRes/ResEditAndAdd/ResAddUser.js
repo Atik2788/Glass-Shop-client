@@ -136,7 +136,7 @@ const ResAddUser = ({ refetch, setEditUserData }) => {
                                     </select>
                                 </div>
 
-                                <input className='btn btn-accent w-full btnCss mt-3' value='Edit User' type="submit" />
+                                <input className='btn btn-accent w-full btnCss mt-3' value='Add User' type="submit" />
                             </form>
 
 

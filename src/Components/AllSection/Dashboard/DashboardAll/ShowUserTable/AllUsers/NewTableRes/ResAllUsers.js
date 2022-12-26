@@ -19,7 +19,6 @@ import ResAddUser from './ResEditAndAdd/ResAddUser';
 // npm i @tanstack/react-query
 // npm install react-icons --save
 //npm i xlsx
-
 // install npm*****************
 
 
@@ -27,6 +26,8 @@ const ResAllUsers = () => {
 
     const [pdfShow, setPdfShow] = useState(false)
     const [pdfShowImg, setPdfShowImg] = useState(false)
+
+    const [actionShow, setActionShow] = useState(true)
 
 
 
@@ -112,12 +113,14 @@ const ResAllUsers = () => {
                 pdf.save("UserData.pdf");
                 setPdfShow(false)
                 setPdfShowImg(false)
+                setActionShow(true)
             }
         });
 
     }
     // for pdf button
     const handlePdfShow = () => {
+        setActionShow(false)
         setPdfShowImg(true)
         setPdfShow(true)
         handlePDF()
@@ -127,39 +130,32 @@ const ResAllUsers = () => {
 
 
 
-  // print page
-  const [titlePrint, setTitlePrint] = useState(true)
+    // print page
+    const [titlePrint, setTitlePrint] = useState(true)
 
-  const handlePrintUser = (data) => {
-      setTitlePrint(false)
-      // handlePrint()
-      handleClick()
-  }
+    const handlePrintUser = (data) => {
+        setTitlePrint(false)
+        setActionShow(false)
+        // handlePrint()
+        handleClick()
+    }
 
-  const handleClick = () => {
-      // setTime out for time delay,
-      setTimeout(() => {
-          handlePrint()
-          setTitlePrint(true)
-      }, 1000)
-  }
+    const handleClick = () => {
+        // setTime out for time delay,
+        setTimeout(() => {
+            handlePrint()
+            setTitlePrint(true)
+            setActionShow(true)
+        }, 1000)
+    }
 
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-      content: () => componentRef.current,
-      documentTitle: 'TableData',
-      // onafterprint: () => setPdfShow(false),
-      onafterprint: () => toast('Print Successfully!!')
-  })
-
-
-
-
-  // click sound
-//   const handleClickSound = () =>{
-//     const audio = new Audio();
-//         audio.src = {clickSound}
-//   }
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: 'TableData',
+        // onafterprint: () => setPdfShow(false),
+        onafterprint: () => toast('Print Successfully!!')
+    })
 
 
 
@@ -169,113 +165,112 @@ const ResAllUsers = () => {
         <div id='total-page'>
             <div className='mt-10 mb-20 mx-[20px]'>
 
-                {/* <h2 className='mb-7 ' id=''>All Users</h2> */}
+
 
                 <div className='mb-7 text-left text-4xl titleColor print-container'>
-                        <Typewriter
-                            options={{
-                                autoStart: true,
-                                loop: true,
-                                delay: 120,
-                                strings: [
-                                    'All Users',
-                                ]
-                            }}
-                        />
-                    </div>
-                {/* <ExclNew userDatas={userDatas}>aaaa</ExclNew> */}
+                    <Typewriter
+                        options={{
+                            autoStart: true,
+                            loop: true,
+                            delay: 120,
+                            strings: [
+                                'All Users',
+                            ]
+                        }}
+                    />
+                </div>
+
                 <div className='bg-white'>
 
                     <div className='lg:flex justify-between pt-7'>
 
                         <div className=' text-left lg:flex grid grid-cols-1 gap-3 md:grid-cols-2'>
-                            <button onClick={handlePdfShow} className='ml-5   pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PDF</span></span></button>
-                            <button className='ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px] hover:text-[#9155FD]'><ResExcl userDatas={userDatas}></ResExcl></button>
+                            <button onClick={handlePdfShow} className='ml-5 pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm py-2 textColor px-5'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PDF</span></span></button>
+                            <button className='ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor px-5 hover:text-[#9155FD]'><ResExcl userDatas={userDatas}></ResExcl></button>
 
-                            <button onClick={() => handlePrintUser('')} className='ml-5 pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm py-2 textColor w-[128px]'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PRINT</span></span></button>
+                            <button onClick={() => handlePrintUser('')} className='ml-5 pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm py-2 textColor px-5'><span className='flex justify-center items-center'> <span className='mr-3'><MdIosShare /></span> <span>PRINT</span></span></button>
 
                             <button className=''>
-                                <div className="ml-5 pdfBorder hover:text-[#9155FD] hover:bg-[#F4F5FA] text-sm h-[38px] textColor w-[191px]">
-                                    <ul className="menu">
-                                        <li tabIndex={0}>
-                                            <span className='text-sm'>SHOW/HIDE COLUMN<span></span></span>
+                                <div className="ml-5 pdfBorder hover:bg-[#F4F5FA] text-sm py-2 textColor px-5 hover:text-[#9155FD]">
 
-                                            <ul className="w-40 lg:ml-[0px] lg:mt-[0px] md:ml-[-180px] md:mt-[35px] ml-[-180px] mt-[37px] bg-[#d6d6d6]">
+                                    <span className='dropdownContainer-2 z-10'>
+                                        <span className=''><span>SHOW/HIDE COLUMN</span></span>
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        toggleAll ?
-                                                            <span onClick={() => setToggleAll(!toggleAll)} className='textColor'><span className="w-[100px] text-left">All Column</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setToggleAll(!toggleAll)} className='textColor'><span className="w-[100px] text-left">All Column</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                        <div className="w-36 lg:ml-[140px] lg:mt-[-30px] md:ml-[70px] md:mt-[0px] ml-[30px] mt-[px] dropdownContent-2">
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        toggleUser ?
-                                                            <span onClick={() => setToggleUser(!toggleUser)} className='textColor'><span className="w-[100px] text-left">User</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setToggleUser(!toggleUser)} className='textColor'><span className="w-[100px] text-left">User</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                            <li>
+                                                {
+                                                    toggleAll ?
+                                                        <span onClick={() => setToggleAll(!toggleAll)} className='textColor text-left'><span className='flex items-center justify-between'><span className='mr-3'>All Column</span> <BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setToggleAll(!toggleAll)} className='textColor text-left'><span className="flex items-center justify-between"><span className='mr-3'>All Column</span><BsCircle /></span></span>
+                                                }
+                                            </li>
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        toggleEmail ?
-                                                            <span onClick={() => setToggleEmail(!toggleEmail)} className='textColor'><span className="w-[100px] text-left">Email</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setToggleEmail(!toggleEmail)} className='textColor'><span className="w-[100px] text-left">Email</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                            <li>
+                                                {
+                                                    toggleUser ?
+                                                        <span onClick={() => setToggleUser(!toggleUser)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">User</span><BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setToggleUser(!toggleUser)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">User</span><BsCircle /></span></span>
+                                                }
+                                            </li>
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        toggleRole ?
-                                                            <span onClick={() => setToggleRole(!toggleRole)} className='textColor'><span className="w-[100px] text-left">Role</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setToggleRole(!toggleRole)} className='textColor'><span className="w-[100px] text-left">Role</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                            <li>
+                                                {
+                                                    toggleEmail ?
+                                                        <span onClick={() => setToggleEmail(!toggleEmail)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">Email</span><BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setToggleEmail(!toggleEmail)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">Email</span><BsCircle /></span></span>
+                                                }
+                                            </li>
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        togglePlan ?
-                                                            <span onClick={() => setTogglePlan(!togglePlan)} className='textColor'><span className="w-[100px] text-left">PLAN</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setTogglePlan(!togglePlan)} className='textColor'><span className="w-[100px] text-left">PLAN</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                            <li>
+                                                {
+                                                    toggleRole ?
+                                                        <span onClick={() => setToggleRole(!toggleRole)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">Role</span><BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setToggleRole(!toggleRole)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">Role</span><BsCircle /></span></span>
+                                                }
+                                            </li>
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        toggleStatus ?
-                                                            <span onClick={() => setToggleStatus(!toggleStatus)} className='textColor'><span className="w-[100px] text-left">STATUS</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setToggleStatus(!toggleStatus)} className='textColor'><span className="w-[100px] text-left">STATUS</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                            <li>
+                                                {
+                                                    togglePlan ?
+                                                        <span onClick={() => setTogglePlan(!togglePlan)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">PLAN</span><BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setTogglePlan(!togglePlan)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">PLAN</span><BsCircle /></span></span>
+                                                }
+                                            </li>
 
-                                                <li tabIndex={0}>
-                                                    {
-                                                        toggleAction ?
-                                                            <span onClick={() => setToggleAction(!toggleAction)} className='textColor'><span className="w-[100px] text-left">ACTION</span><span className=""><BsCircleFill /></span></span>
-                                                            :
-                                                            <span onClick={() => setToggleAction(!toggleAction)} className='textColor'><span className="w-[100px] text-left">ACTION</span><span><BsCircle /></span></span>
-                                                    }
-                                                </li>
+                                            <li>
+                                                {
+                                                    toggleStatus ?
+                                                        <span onClick={() => setToggleStatus(!toggleStatus)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">STATUS</span><BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setToggleStatus(!toggleStatus)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">STATUS</span><BsCircle /></span></span>
+                                                }
+                                            </li>
 
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                            <li>
+                                                {
+                                                    toggleAction ?
+                                                        <span onClick={() => setToggleAction(!toggleAction)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">ACTION</span><BsCircleFill /></span></span>
+                                                        :
+                                                        <span onClick={() => setToggleAction(!toggleAction)} className='textColor text-left'><span className="flex items-center justify-between"><span className="mr-3">ACTION</span><BsCircle /></span></span>
+                                                }
+                                            </li>
+
+                                        </div>
+                                    </span>
                                 </div>
 
                             </button>
                         </div>
 
                         <div className='lg:flex grid grid-cols-1 gap-3 mt-4 lg:mt-0 text-right'>
-                            <input className='ml-5 pdfBorder text-sm py-2 textColor w-[238px] pl-5' type="text" placeholder='Search Invoice' />
-                            <button className='ml-5 mr-5 pdfBorder text-sm py-2  w-[128px] btnCss'>
+                            <input className='ml-5 pdfBorder text-sm py-2 textColor pl-5' type="text" placeholder='Search Invoice' />
+                            <button className='ml-5 mr-5 pdfBorder text-sm py-2 px-5  btnCss'>
                                 <label htmlFor="add-user-modal-res" onClick={() => setEditUserData('Added')}>ADD USER</label>
                             </button>
 
@@ -309,28 +304,34 @@ const ResAllUsers = () => {
                                         }
 
                                         {toggleUser &&
-                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => nameSorting("person")}><span className='flex justify-between text-xs textColor w-[230px]'><span className='text-right ml-2 textTable'>USER</span><span className='tableBracker'></span></span></th>
+                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => nameSorting("person")}><span className='flex justify-between text-xs textColor '><span className='text-right ml-2 textTable'>USER</span><span className='tableBracker'></span></span></th>
                                         }
 
                                         {toggleEmail &&
-                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("city")}><span className='flex justify-between px-4 textColor text-xs w-[274px]'><span className='textTable'>EMAIL</span><span className='tableBracker'></span></span></th>
+                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("city")}><span className='flex justify-between px-4 textColor text-xs '><span className='textTable'>EMAIL</span><span className='tableBracker'></span></span></th>
                                         }
 
                                         {toggleRole &&
-                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("email")}><span className='flex justify-between px-4 textColor text-xs w-[180px]'><span className=' textTable'>ROLE</span><span className='tableBracker'></span></span></th>
+                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("email")}><span className='flex justify-between px-4 textColor text-xs'><span className=' textTable'>ROLE</span><span className='tableBracker'></span></span></th>
                                         }
 
                                         {togglePlan &&
-                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("joiningDate")}><span className='flex justify-between px-4 textColor text-xs w-[180px]'><span className=' textTable'>PLAN</span><span className='tableBracker'></span></span></th>
+                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("joiningDate")}><span className='flex justify-between px-4 textColor text-xs '><span className=' textTable'>PLAN</span><span className='tableBracker'></span></span></th>
                                         }
 
                                         {toggleStatus &&
-                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("role")}><span className='flex justify-between px-4 textColor text-xs w-[100px]'><span className=' textTable'>STATUS</span> <span className='tableBracker'></span></span></th>
+                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("role")}><span className='flex justify-between px-4 textColor text-xs '><span className=' textTable'>STATUS</span> <span className='tableBracker'></span></span></th>
                                         }
 
-                                        {toggleAction &&
-                                            <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("role")}><span className='flex px-4 text-xs textColor justify-between w-[100px] textTable'>ACTION<span className='tableBracker'></span></span></th>
+                                        {actionShow &&
+                                            <span>
+                                                {toggleAction &&
+                                                    <th className=' text-sm py-2 hover:bg-slate-300' onClick={() => sorting("role")}><span className='flex px-4 text-xs textColor justify-between textTable'><span className='mr-5'>ACTION</span><span className='tableBracker'></span></span></th>
+                                                }
+                                            </span>
                                         }
+
+
 
 
 
@@ -357,6 +358,7 @@ const ResAllUsers = () => {
                                                 editUserData={editUserData}
                                                 setEditUserData={setEditUserData}
                                                 pdfShowImg={pdfShowImg}
+                                                actionShow={actionShow}
                                             ></ResAllUserRow>
                                         )
                                     }

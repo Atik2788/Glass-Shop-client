@@ -179,7 +179,7 @@ const ResEditModal = ({ editUserData, setEditUserData, refetch }) => {
                                     </select>
                                 </div>
 
-                                <input className='btn btn-accent w-full btnCss mt-3' value='Edit User' type="submit" />
+                                <input className='btn btn-accent w-full btnCss mt-3' value='Update' type="submit" />
                             </form>
 
 
